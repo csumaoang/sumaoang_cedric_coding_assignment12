@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Button, Label, Text } from './components';
+import { Button, Label, Text, Table, TableHeader, TableRow, TableCell, TableFooter } from './components';
 
 function App() {
   return (
@@ -23,6 +23,34 @@ function App() {
         <section>
           <h2>Text</h2>
           <Text>This is a text component</Text>
+        </section>
+
+        <section>
+          <h2>Table</h2>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableCell>Header 1</TableCell>
+                <TableCell>Header 2</TableCell>
+              </TableRow>
+            </TableHeader>
+            <tbody>
+              <TableRow>
+                <TableCell>Row 1 Cell 1</TableCell>
+                <TableCell>Row 1 Cell 2</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Row 2 Cell 1</TableCell>
+                <TableCell>Row 2 Cell 2</TableCell>
+              </TableRow>
+            </tbody>
+            <TableFooter>
+              <TableRow>
+                <TableCell>Footer 1</TableCell>
+                <TableCell>Footer 2</TableCell>
+              </TableRow>
+            </TableFooter>
+          </Table>
         </section>
 
       </main>
