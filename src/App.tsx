@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Button, Label, Text, Table, TableHeader, TableRow, TableCell, TableFooter } from './components';
+import { Button, Label, Text, Table, TableHeader, TableRow, TableCell, TableFooter, Dropdown } from './components';
 
 function App() {
   return (
@@ -51,6 +51,11 @@ function App() {
               </TableRow>
             </TableFooter>
           </Table>
+        </section>
+
+        <section>
+          <h2>Dropdown</h2>
+          <Dropdown options={['Option 1', 'Option 2', 'Option 3']} />
         </section>
 
       </main>
