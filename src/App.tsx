@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Button, Label, Text, Table, TableHeader, TableRow, TableCell, TableFooter, Dropdown } from './components';
+import { Button, Label, Text, Table, TableHeader, TableRow, TableCell, TableFooter, Dropdown, RadioButton } from './components';
 
 function App() {
   return (
@@ -56,6 +56,26 @@ function App() {
         <section>
           <h2>Dropdown</h2>
           <Dropdown options={['Option 1', 'Option 2', 'Option 3']} />
+        </section>
+
+        <section>
+        <h2>Radio Button Component</h2>
+          <RadioButton
+            name="radioGroup"
+            options={[
+              { label: 'Option 1', value: '1' },
+              { label: 'Option 2', value: '2' },
+            ]}
+            onChange={(value) => console.log(value)}
+          />
+          <RadioButton
+            name="radioGroupDisabled"
+            options={[
+              { label: 'Option 1', value: '1' },
+              { label: 'Option 2', value: '2' },
+            ]}
+            disabled={true}
+          />
         </section>
 
       </main>
