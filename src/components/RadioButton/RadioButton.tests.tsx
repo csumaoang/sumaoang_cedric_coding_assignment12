@@ -1,32 +1,18 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect'; // for custom jest matchers
 import RadioButton from './RadioButton';
 
-test('renders radio buttons with options', () => {
-  render(
-    <RadioButton
-      name="example"
-      options={[
-        { label: 'Option 1', value: '1' },
-        { label: 'Option 2', value: '2' },
-      ]}
-    />
-  );
-  const optionElement = screen.getByLabelText(/option 1/i);
-  expect(optionElement).toBeInTheDocument();
-});
+export function RadioButtonTests() {
+  test('RadioButton component is visible', () => {
+    render(<RadioButton name="test" options={[{ label: 'Option 1', value: '1' }]} />);
+    const radioButtonElement = screen.getByLabelText(/option 1/i);
+    expect(radioButtonElement).toBeVisible();
+  });
 
-test('renders disabled radio button', () => {
-  render(
-    <RadioButton
-      name="example"
-      options={[
-        { label: 'Option 1', value: '1' },
-        { label: 'Option 2', value: '2' },
-      ]}
-      disabled={true}
-    />
-  );
-  const optionElement = screen.getByLabelText(/option 1/i);
-  expect(optionElement).toHaveStyle('cursor: not-allowed');
-});
+  test('RadioButton component changes cursor when disabled', () => {
+    render(<RadioButton name="test" options={[{ label: 'Option 1', value: '1' }]} disabled={true} />);
+    const radioButtonElement = screen.getByLabelText(/option 1/i);
+    expect(radioButtonElement).toHaveStyle('cursor: not-allowed');
+  });
+}

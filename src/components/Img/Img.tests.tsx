@@ -1,15 +1,19 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect'; // for custom jest matchers
 import Img from './Img';
 
-test('renders image with src and alt', () => {
-  render(<Img src="https://via.placeholder.com/150" alt="Placeholder Image" />);
-  const imgElement = screen.getByAltText(/placeholder image/i);
-  expect(imgElement).toBeInTheDocument();
-});
+export function ImgTests() {
+  test('Img component is visible', () => {
+    render(<Img src="image.jpg" alt="Image" />);
+    const imgElement = screen.getByAltText(/image/i);
+    expect(imgElement).toBeVisible();
+  });
 
-test('renders disabled image', () => {
-  render(<Img src="https://via.placeholder.com/150" alt="Placeholder Image" disabled={true} />);
-  const imgElement = screen.getByAltText(/placeholder image/i);
-  expect(imgElement).toHaveStyle('opacity: 0.5');
-});
+  test('Img component changes opacity and cursor when disabled', () => {
+    render(<Img src="image.jpg" alt="Image" disabled={true} />);
+    const imgElement = screen.getByAltText(/image/i);
+    expect(imgElement).toHaveStyle('opacity: 0.5');
+    expect(imgElement).toHaveStyle('cursor: not-allowed');
+  });
+}

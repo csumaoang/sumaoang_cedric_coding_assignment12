@@ -1,15 +1,23 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect'; // for custom jest matchers
 import Button from './Button';
 
-test('renders Button component', () => {
-  render(<Button>Button</Button>);
-  const buttonElement = screen.getByText(/Button/i);
-  expect(buttonElement).toBeInTheDocument();
-});
+export function ButtonTests() {
+  test('Button component is visible', () => {
+    render(<Button>Click me</Button>);
+    const buttonElement = screen.getByText(/click me/i);
+    expect(buttonElement).toBeVisible();
+  });
 
-test('changes background color when disabled', () => {
-  render(<Button disabled>Button</Button>);
-  const buttonElement = screen.getByText(/Button/i);
-  expect(buttonElement).toHaveStyle('background-color: grey');
-});
+  test('Button component changes background color when disabled', () => {
+    render(<Button disabled={true}>Click me</Button>);
+    const buttonElement = screen.getByText(/click me/i);
+    
+    // Check background color when disabled
+    expect(buttonElement).toHaveStyle('background-color: grey');
+
+    // Optionally check cursor style when disabled
+    expect(buttonElement).toHaveStyle('cursor: not-allowed');
+  });
+}

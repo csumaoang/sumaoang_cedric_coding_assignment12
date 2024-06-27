@@ -1,15 +1,19 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect'; // for custom jest matchers
 import Dropdown from './Dropdown';
 
-test('renders dropdown with options', () => {
-  render(<Dropdown options={['Option 1', 'Option 2', 'Option 3']} />);
-  const optionElement = screen.getByText(/option 1/i);
-  expect(optionElement).toBeInTheDocument();
-});
+export function DropdownTests() {
+  test('Dropdown component is visible', () => {
+    render(<Dropdown options={['Option 1', 'Option 2']} />);
+    const dropdownElement = screen.getByRole('combobox');
+    expect(dropdownElement).toBeVisible();
+  });
 
-test('renders disabled dropdown', () => {
-  render(<Dropdown options={['Option 1', 'Option 2', 'Option 3']} disabled={true} />);
-  const selectElement = screen.getByRole('combobox');
-  expect(selectElement).toHaveStyle('background-color: grey');
-});
+  test('Dropdown component changes background color and cursor when disabled', () => {
+    render(<Dropdown options={['Option 1', 'Option 2']} disabled={true} />);
+    const dropdownElement = screen.getByRole('combobox');
+    expect(dropdownElement).toHaveStyle('background-color: grey');
+    expect(dropdownElement).toHaveStyle('cursor: not-allowed');
+  });
+}

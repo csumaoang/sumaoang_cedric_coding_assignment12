@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Button, Label, Text, Table, TableHeader, TableRow, TableCell, TableFooter, Dropdown, RadioButton, Img, HeroImage, Card } from './components';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -17,7 +17,7 @@ function App() {
 
         <section>
           <h2>Label Component</h2>
-          <Label text="This is a Label component" /><br></br>
+          <Label text="This is a Label component" />
           <Label text="Disabled Label" disabled={true} />
         </section>
 
@@ -28,28 +28,28 @@ function App() {
         </section>
 
         <section>
-        <h2>Table Component</h2>
+          <h2>Table Component</h2>
           <Table>
             <TableHeader>
               <TableRow>
                 <TableCell>Header 1</TableCell>
-                <TableCell disabled={true}>Header 2</TableCell> {/* Set as disabled */}
+                <TableCell disabled={true}>Header 2</TableCell>
               </TableRow>
             </TableHeader>
             <tbody>
               <TableRow>
                 <TableCell>Row 1 Cell 1</TableCell>
-                <TableCell disabled={true}>Row 1 Cell 2</TableCell> {/* Set as disabled */}
+                <TableCell disabled={true}>Row 1 Cell 2</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>Row 2 Cell 1</TableCell>
-                <TableCell>Row 2 Cell 2</TableCell> {/* Not disabled */}
+                <TableCell>Row 2 Cell 2</TableCell>
               </TableRow>
             </tbody>
             <TableFooter>
               <TableRow>
                 <TableCell>Footer 1</TableCell>
-                <TableCell disabled={true}>Footer 2</TableCell> {/* Set as disabled */}
+                <TableCell disabled={true}>Footer 2</TableCell>
               </TableRow>
             </TableFooter>
           </Table>
@@ -62,7 +62,7 @@ function App() {
         </section>
 
         <section>
-        <h2>Radio Button Component</h2>
+          <h2>Radio Button Component</h2>
           <RadioButton
             name="radioGroup"
             options={[
@@ -102,6 +102,6 @@ function App() {
       </main>
     </div>
   );
-}
+};
 
 export default App;

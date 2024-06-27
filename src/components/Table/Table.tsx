@@ -1,3 +1,4 @@
+// Table.tsx
 import React from 'react';
 import styled from 'styled-components';
 
@@ -19,8 +20,8 @@ const TableRow = styled.tr<{ disabled?: boolean }>`
 const TableCell = styled.td<{ disabled?: boolean }>`
   padding: 8px;
   border: 1px solid #ddd;
-  background-color: ${({ disabled }) => (disabled ? '#eee' : 'inherit')};
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'default')}; /* Cursor styles */
+  background-color: ${({ disabled }) => (disabled ? '#ccc' : 'inherit')};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'default')};
 `;
 
 const TableFooter = styled.tfoot<{ disabled?: boolean }>`
@@ -36,7 +37,6 @@ const Table: React.FC<TableProps> = ({ children, disabled = false }) => {
   const modifyChildren = (child: React.ReactNode): React.ReactNode => {
     if (!React.isValidElement(child)) return child;
 
-    // Clone and pass the disabled prop to each child element
     return React.cloneElement(child as React.ReactElement<any>, { disabled });
   };
 
@@ -48,5 +48,6 @@ const Table: React.FC<TableProps> = ({ children, disabled = false }) => {
     </TableContainer>
   );
 };
+
 
 export { Table, TableHeader, TableRow, TableCell, TableFooter };
