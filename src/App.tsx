@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Button, Label} from './components';
+import { Button, Label, Text } from './components';
 
 function App() {
   return (
@@ -19,6 +19,12 @@ function App() {
           <h2>Label</h2>
           <Label>Label Text</Label>
         </section>
+
+        <section>
+          <h2>Text</h2>
+          <Text>This is a text component</Text>
+        </section>
+
       </main>
     </div>
   );
