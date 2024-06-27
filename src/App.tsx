@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Button, Label, Text, Table, TableHeader, TableRow, TableCell, TableFooter, Dropdown, RadioButton, Img } from './components';
+import { Button, Label, Text, Table, TableHeader, TableRow, TableCell, TableFooter, Dropdown, RadioButton, Img, HeroImage } from './components';
 
 function App() {
   return (
@@ -83,6 +83,10 @@ function App() {
           <Img src="https://picsum.photos/1920/1080" alt="Sample Image" />
         </section>
 
+        <section>
+          <h2>Hero Image</h2>
+          <HeroImage src="https://picsum.photos/1440/900" alt="Hero Image" />
+        </section>
 
       </main>
     </div>
