@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Button, Label, Text, Table, TableHeader, TableRow, TableCell, TableFooter, Dropdown, RadioButton } from './components';
+import { Button, Label, Text, Table, TableHeader, TableRow, TableCell, TableFooter, Dropdown, RadioButton, Img } from './components';
 
 function App() {
   return (
@@ -77,6 +77,12 @@ function App() {
             disabled={true}
           />
         </section>
+
+        <section>
+          <h2>Image</h2>
+          <Img src="https://picsum.photos/1920/1080" alt="Sample Image" />
+        </section>
+
 
       </main>
     </div>
