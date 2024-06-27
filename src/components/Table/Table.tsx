@@ -1,44 +1,52 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledTable = styled.table`
+const TableContainer = styled.table`
   width: 100%;
   border-collapse: collapse;
 `;
 
-const StyledTableHeader = styled.thead`
-  background-color: #f2f2f2;
+const TableHeader = styled.thead<{ disabled?: boolean }>`
+  background-color: ${({ disabled }) => (disabled ? '#ccc' : '#f2f2f2')};
 `;
 
-const StyledTableRow = styled.tr`
-  border-bottom: 1px solid #ddd;
+const TableRow = styled.tr<{ disabled?: boolean }>`
+  &:nth-child(even) {
+    background-color: ${({ disabled }) => (disabled ? '#ccc' : '#f2f2f2')};
+  }
 `;
 
-const StyledTableCell = styled.td`
+const TableCell = styled.td<{ disabled?: boolean }>`
   padding: 8px;
-  text-align: left;
+  border: 1px solid #ddd;
+  background-color: ${({ disabled }) => (disabled ? '#eee' : 'inherit')};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'default')}; /* Cursor styles */
 `;
 
-const StyledTableFooter = styled.tfoot`
-  background-color: #f2f2f2;
+const TableFooter = styled.tfoot<{ disabled?: boolean }>`
+  background-color: ${({ disabled }) => (disabled ? '#ccc' : '#f2f2f2')};
 `;
 
-export const Table: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <StyledTable>{children}</StyledTable>
-);
+export type TableProps = {
+  children: React.ReactNode;
+  disabled?: boolean;
+};
 
-export const TableHeader: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <StyledTableHeader>{children}</StyledTableHeader>
-);
+const Table: React.FC<TableProps> = ({ children, disabled = false }) => {
+  const modifyChildren = (child: React.ReactNode): React.ReactNode => {
+    if (!React.isValidElement(child)) return child;
 
-export const TableRow: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <StyledTableRow>{children}</StyledTableRow>
-);
+    // Clone and pass the disabled prop to each child element
+    return React.cloneElement(child as React.ReactElement<any>, { disabled });
+  };
 
-export const TableCell: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <StyledTableCell>{children}</StyledTableCell>
-);
+  return (
+    <TableContainer>
+      {React.Children.map(children, (child) => {
+        return modifyChildren(child);
+      })}
+    </TableContainer>
+  );
+};
 
-export const TableFooter: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <StyledTableFooter>{children}</StyledTableFooter>
-);
+export { Table, TableHeader, TableRow, TableCell, TableFooter };

@@ -6,7 +6,7 @@ export default {
   title: 'Components/Text',
   component: Text,
   argTypes: {
-    children: { control: 'text' },
+    text: { control: 'text' },
   },
 } as Meta;
 
@@ -14,5 +14,5 @@ const Template: StoryFn<TextProps> = (args) => <Text {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: 'This is a text component',
+  text: 'This is a text component',
 };

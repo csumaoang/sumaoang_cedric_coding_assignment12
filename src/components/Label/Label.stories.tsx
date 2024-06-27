@@ -6,7 +6,7 @@ export default {
   title: 'Components/Label',
   component: Label,
   argTypes: {
-    children: { control: 'text' },
+    text: { control: 'text' },
   },
 } as Meta;
 
@@ -14,5 +14,5 @@ const Template: StoryFn<LabelProps> = (args) => <Label {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: 'Label Text',
+  text: 'Label Text',
 };
