@@ -15,7 +15,7 @@ Follow these instructions to get the site up and running on `localhost:8083`.
 1. Clone the repository:
 
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/csumaoang/sumaoang_cedric_coding_assignment12.git
    cd my-component-library
    ```
 
